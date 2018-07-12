@@ -1,0 +1,28 @@
+{
+  "services": {
+    "http": {
+      "port": 8080,
+      "apps": [
+        {
+          "name": "weather-rest",
+          "version": "v1",
+          "versions": [
+            "v1"
+          ]
+        },
+        {
+          "name": "weather-static",
+          "path": "../../../../build"
+        }
+      ]
+    }
+  },
+  "providers": {
+    "location": "http://ip-api.com/json/${args.address}",
+    "weatherForecast": "https://api.openweathermap.org/data/2.5/forecast?q=${args.q}&lat=${args.lat}&lon=${args.lon}&appid=e113177a8d73a7c22fdf3c6c65e7053c",
+    "weatherCurrent": "https://api.openweathermap.org/data/2.5/weather?q=${args.q}&lat=${args.lat}&lon=${args.lon}&appid=e113177a8d73a7c22fdf3c6c65e7053c"
+  },
+  "memoizee": {
+    "maxAge": 600000
+  }
+}
